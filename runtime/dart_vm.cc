@@ -308,7 +308,7 @@ DartVM::DartVM(const Settings& settings,
   args.push_back("--ignore-unrecognized-flags");
 
   for (const auto& profiler_flag :
-       ProfilingFlags(settings.enable_dart_profiling)) {
+       ProfilingFlags(false)) {
     args.push_back(profiler_flag);
   }
 
@@ -321,7 +321,7 @@ DartVM::DartVM(const Settings& settings,
 
   // Enable checked mode if we are not running precompiled code. We run non-
   // precompiled code only in the debug product mode.
-  bool use_checked_mode = !settings.dart_non_checked_mode;
+  bool use_checked_mode = false;
 
 #if !OS(FUCHSIA)
   if (IsRunningPrecompiledCode()) {
@@ -332,8 +332,8 @@ DartVM::DartVM(const Settings& settings,
 #if FLUTTER_RUNTIME_MODE == FLUTTER_RUNTIME_MODE_DEBUG
   // Debug mode uses the JIT, disable code page write protection to avoid
   // memory page protection changes before and after every compilation.
-  PushBackAll(&args, kDartWriteProtectCodeArgs,
-              arraysize(kDartWriteProtectCodeArgs));
+  // PushBackAll(&args, kDartWriteProtectCodeArgs,
+  //             arraysize(kDartWriteProtectCodeArgs));
 #endif
 
   const bool isolate_snapshot_is_dart_2 =

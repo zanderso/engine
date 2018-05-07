@@ -118,7 +118,7 @@ def to_gn_args(args):
     # On iOS Devices, use the Dart bytecode interpreter so we don't incur
     # snapshotting and linking costs of the precompiler during development.
     # We can still use the JIT on the simulator though.
-    use_dbc = args.target_os == 'ios' and not args.simulator and args.runtime_mode == 'debug'
+    use_dbc = args.runtime_mode == 'debug'
     if use_dbc:
       gn_args['dart_target_arch'] = 'dbc'
     else:

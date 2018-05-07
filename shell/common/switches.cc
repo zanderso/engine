@@ -224,10 +224,10 @@ blink::Settings SettingsFromCommandLine(const fxl::CommandLine& command_line) {
       settings.dart_flags.push_back(*it);
   }
 
-#if FLUTTER_RUNTIME_MODE != FLUTTER_RUNTIME_MODE_RELEASE
-  settings.trace_skia =
-      command_line.HasOption(FlagForSwitch(Switch::TraceSkia));
-#endif
+// #if FLUTTER_RUNTIME_MODE != FLUTTER_RUNTIME_MODE_RELEASE
+//   settings.trace_skia =
+//       command_line.HasOption(FlagForSwitch(Switch::TraceSkia));
+// #endif
 
   return settings;
 }
