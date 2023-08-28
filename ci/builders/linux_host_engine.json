@@ -233,7 +233,7 @@
                 {
                     "language": "bash",
                     "name": "Upload metrics dry-run",
-		    "parameters": [
+                    "parameters": [
                         "--no-upload"
                     ],
                     "script": "flutter/testing/benchmark/upload_metrics.sh"
